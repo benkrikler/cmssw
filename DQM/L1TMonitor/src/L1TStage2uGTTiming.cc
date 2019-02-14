@@ -83,7 +83,7 @@ void L1TStage2uGTTiming::bookHistograms(DQMStore::IBooker &ibooker, edm::Run con
   const auto unpreAlgs_d = static_cast<double>(unprescaledAlgoBitName_.size());
 
   ibooker.setCurrentFolder(monitorDir_);
-  
+
   first_collision_in_train_minus2_ = ibooker.book2D("first_bunch_in_train_minus2", "uGT: Algorithm Trigger Bits (first bunch in train minus 2) vs. BX Number In Event;Bunch Crossing Number In Event;Algorithm Trigger Bits", 5, -2.5, 2.5, numAlgs_, -0.5, numAlgs_d-0.5);
   den_first_collision_in_train_minus2_ = ibooker.book2D("den_first_bunch_in_train_minus2", "uGT: Algorithm Trigger Bits (all entries for each trigget bit first bunch in train minus 2) vs. BX Number In Event;Bunch Crossing Number In Event;Algorithm Trigger Bits", 5, -2.5, 2.5, numAlgs_, -0.5, numAlgs_d-0.5);
 
@@ -168,16 +168,16 @@ void L1TStage2uGTTiming::analyze(const edm::Event& evt, const edm::EventSetup& e
   if (verbose_) {
     edm::LogInfo("L1TStage2uGTTiming") << "L1TStage2uGTTiming DQM: Analyzing.." << std::endl;
   }
-  
+
   // Open uGT readout record
   edm::Handle<GlobalAlgBlkBxCollection> uGtAlgs;
   evt.getByToken(l1tStage2uGtSource_, uGtAlgs);
-  
+
   if (!uGtAlgs.isValid()) {
     edm::LogInfo("L1TStage2uGTTiming") << "Cannot find uGT readout record.";
     return;
   }
- 
+
   // Find out in which BX the first collision in train, isolated bunch, and last collision in train have fired.
   // In case of pre firing it will be in BX 1 or BX 2 and this will determine the BX shift that
   // will be applied to the timing histogram later.

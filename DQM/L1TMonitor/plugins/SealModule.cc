@@ -51,6 +51,9 @@ DEFINE_FWK_MODULE(L1TStage2uGT);
 #include <DQM/L1TMonitor/interface/L1TStage2uGTTiming.h>
 DEFINE_FWK_MODULE(L1TStage2uGTTiming);
 
+#include <DQM/L1TMonitor/interface/L1TStage2uGTTimingUnprefireable.h>
+DEFINE_FWK_MODULE(L1TStage2uGTTimingUnprefireable);
+
 #include <DQM/L1TMonitor/interface/L1TStage2BMTF.h>
 DEFINE_FWK_MODULE(L1TStage2BMTF);
 

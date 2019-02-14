@@ -142,10 +142,17 @@ l1tStage2uGTRatioTimingPlots = DQMEDHarvester("DQMGenericClient",
     makeGlobalEffienciesPlot = cms.untracked.bool(False)
 )
 
+# Prefiring plots
+l1tStage2uGTPrefiringPlots = DQMEDHarvester("L1TStage2PrefiringClient",
+    monitorDir = cms.untracked.string(ugtDqmDir+'/prefiring'),
+    inputDir = cms.untracked.string("L1T/L1TStage2uGT/timing_aux_unprefireable"),
+)
+
 # sequences
 l1tStage2uGTClient = cms.Sequence(
     l1tStage2uGTvsCaloLayer2RatioClient +
     l1tStage2uGMTOutVsuGTInRatioClient +
     l1tStage2uGTBoardCompRatioClientSeq + 
-    l1tStage2uGTRatioTimingPlots
+    l1tStage2uGTRatioTimingPlots +
+    l1tStage2uGTPrefiringPlots
 )

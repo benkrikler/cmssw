@@ -35,3 +35,6 @@ DEFINE_FWK_MODULE(L1TStage2RatioClient);
 
 #include <DQM/L1TMonitorClient/interface/L1TEMTFEventInfoClient.h>
 DEFINE_FWK_MODULE(L1TEMTFEventInfoClient);
+
+#include <DQM/L1TMonitorClient/interface/L1TStage2PrefiringClient.h>
+DEFINE_FWK_MODULE(L1TStage2PrefiringClient);

@@ -37,3 +37,9 @@ l1tStage2uGTOnlineDQMSeq = cms.Sequence(
 l1tStage2uGTValidationEventOnlineDQMSeq = cms.Sequence(
     l1tStage2uGTBoardCompSeq
 )
+
+# Unprefirable events sequence
+l1tStage2uGTUnprefirableDQM = cms.Sequence(
+    l1tStage2uGTTimingUnprefirable
+)
+

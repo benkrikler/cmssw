@@ -80,34 +80,6 @@ private:
   MonitorElement* all_algos_vs_bx[2];
   MonitorElement* prescaled_algos_vs_bx[2];
   MonitorElement* unprescaled_algos_vs_bx[2];
-
-//  // Pre- Post- firing timing dedicated plots
-//  MonitorElement* first_collision_in_train_minus2_;
-//  MonitorElement* first_collision_in_train_minus1_;
-//  MonitorElement* first_collision_in_train_;
-//  MonitorElement* last_collision_in_train_;
-//  MonitorElement* isolated_collision_;
-//
-//  MonitorElement* den_first_collision_in_train_minus2_; 
-//  MonitorElement* den_first_collision_in_train_minus1_; 
-//  MonitorElement* den_first_collision_in_train_; 
-//  MonitorElement* den_last_collision_in_train_;
-//  MonitorElement* den_isolated_collision_;
-//
-//  // Prescaled and unprescaled short list algo trigger bits
-//  MonitorElement* prescaled_algo_first_collision_in_train_;
-//  MonitorElement* unprescaled_algo_first_collision_in_train_;
-//  MonitorElement* prescaled_algo_isolated_collision_;
-//  MonitorElement* unprescaled_algo_isolated_collision_;
-//  MonitorElement* prescaled_algo_last_collision_in_train_;
-//  MonitorElement* unprescaled_algo_last_collision_in_train_;
-//
-//  MonitorElement* den_prescaled_algo_first_collision_in_train_;
-//  MonitorElement* den_unprescaled_algo_first_collision_in_train_;
-//  MonitorElement* den_prescaled_algo_isolated_collision_;
-//  MonitorElement* den_unprescaled_algo_isolated_collision_;
-//  MonitorElement* den_prescaled_algo_last_collision_in_train_;
-//  MonitorElement* den_unprescaled_algo_last_collision_in_train_;
 };
 
 #endif

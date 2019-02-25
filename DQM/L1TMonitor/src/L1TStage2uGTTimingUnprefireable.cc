@@ -72,7 +72,7 @@ void L1TStage2uGTTimingUnprefireable::bookHistograms(DQMStore::IBooker &ibooker,
     const auto bit_name_pair = prescaledAlgoBitName_.at(algo);
     std::string name = bit_name_pair.first+" ("+std::to_string(bit_name_pair.second)+")";
     prescaled_algos_vs_bx[true]->setBinLabel(algo+1, name, 2);
-    prescaled_algos_vs_bx[false]  ->setBinLabel(algo+1, name, 2);
+    prescaled_algos_vs_bx[false]->setBinLabel(algo+1, name, 2);
   }
 
   n_selected_algs = unprescaledAlgoBitName_.size();

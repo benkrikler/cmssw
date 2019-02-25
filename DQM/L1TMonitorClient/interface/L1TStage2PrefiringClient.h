@@ -36,7 +36,7 @@ class L1TStage2PrefiringClient: public DQMEDHarvester
 	std::string doubleRatioName_, doubleRatioTitle_;
 
         MonitorElement* ratioME_;
-        MonitorElement* doubleRatioME_;
+        MonitorElement* doubleRatioME_[2];
     };
 
   public:

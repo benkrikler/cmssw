@@ -51,36 +51,42 @@ void L1TStage2PrefiringClient::DoubleRatio::FirstRatio(DQMStore::IGetter& igette
   const MonitorElement* numME_ = igetter.get(inputNum_);
   const MonitorElement* denME_ = igetter.get(inputDen_);
 
-  if (numME_ && denME_) {
-    TH2F *hNum = numME_->getTH2F();
-    TH2F *hDen = dynamic_cast<TH2F*>(denME_->getTH2F()->Clone("den"));
-
-    TH2F *hRatio = ratioME_->getTH2F();
-    TH2F *hDoubleRatio = doubleRatioME_->getTH2F();
-
-    // Set the axis labels the same as the numerator histogram to be able to divide
-    if (hNum->GetXaxis()->IsAlphanumeric()) {
-      for (int i = 1; i <= hNum->GetNbinsX(); ++i) {
-        hDen->GetXaxis()->SetBinLabel(i, hNum->GetXaxis()->GetBinLabel(i));
-        hRatio->GetXaxis()->SetBinLabel(i, hNum->GetXaxis()->GetBinLabel(i));
-        hDoubleRatio->GetXaxis()->SetBinLabel(i, hNum->GetXaxis()->GetBinLabel(i));
-      }
-    }
-    if (hNum->GetYaxis()->IsAlphanumeric()) {
-      for (int i = 1; i <= hNum->GetNbinsY(); ++i) {
-        hDen->GetYaxis()->SetBinLabel(i, hNum->GetYaxis()->GetBinLabel(i));
-        hRatio->GetYaxis()->SetBinLabel(i, hNum->GetYaxis()->GetBinLabel(i));
-        hDoubleRatio->GetYaxis()->SetBinLabel(i, hNum->GetYaxis()->GetBinLabel(i));
-      }
-    }
-
-    hRatio->Divide(hNum, hDen, 1, 1, "B");
-
-    delete hDen;
+  if (!numME_ || !denME_) {
+    return;
   }
+
+  TH2F *hNum = numME_->getTH2F();
+  TH2F *hDen = dynamic_cast<TH2F*>(denME_->getTH2F()->Clone("den"));
+
+  TH2F *hRatio = ratioME_->getTH2F();
+  TH2F *hDoubleRatio = doubleRatioME_->getTH2F();
+
+  // Set the axis labels the same as the numerator histogram to be able to divide
+  if (hNum->GetXaxis()->IsAlphanumeric()) {
+    for (int i = 1; i <= hNum->GetNbinsX(); ++i) {
+      hDen->GetXaxis()->SetBinLabel(i, hNum->GetXaxis()->GetBinLabel(i));
+      hRatio->GetXaxis()->SetBinLabel(i, hNum->GetXaxis()->GetBinLabel(i));
+      hDoubleRatio->GetXaxis()->SetBinLabel(i, hNum->GetXaxis()->GetBinLabel(i));
+    }
+  }
+  if (hNum->GetYaxis()->IsAlphanumeric()) {
+    for (int i = 1; i <= hNum->GetNbinsY(); ++i) {
+      hDen->GetYaxis()->SetBinLabel(i, hNum->GetYaxis()->GetBinLabel(i));
+      hRatio->GetYaxis()->SetBinLabel(i, hNum->GetYaxis()->GetBinLabel(i));
+      hDoubleRatio->GetYaxis()->SetBinLabel(i, hNum->GetYaxis()->GetBinLabel(i));
+    }
+  }
+
+  hRatio->Divide(hNum, hDen, 1, 1, "B");
+
+  delete hDen;
 }
 
 void L1TStage2PrefiringClient::DoubleRatio::NormToBX0(){
+  if (!ratioME_) {
+    return;
+  }
+
   TH2F *hRatio = ratioME_->getTH2F();
   TH2F *hDoubleRatio = doubleRatioME_->getTH2F();
   const int bx_zero_bin = hRatio->GetXaxis()->FindFixBin(0.);

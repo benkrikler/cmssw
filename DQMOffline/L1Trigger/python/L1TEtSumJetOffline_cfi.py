@@ -146,6 +146,13 @@ l1tEtSumJetOfflineDQM = DQMEDAnalyzer(
     ),
 )
 
+l1tPrefiringOfflineDQM = DQMEDAnalyzer(
+      "L1TPrefiringDQMOffline",
+      tcdsRecordLabel = cms.InputTag("tcdsDigis","tcdsRecord"),
+      offlineJetSource = cms.InputTag("goodPFJetsForL1T"),
+      stage2CaloLayer2JetSource=cms.InputTag("caloStage2Digis", "Jet")
+)
+
 # modifications for the pp reference run
 jetEfficiencyThresholds_HI = [8, 16, 24, 44, 60, 80, 90]
 jetEfficiencyBins_HI = []
@@ -179,6 +186,7 @@ l1tEtSumJetOfflineDQMSeq = cms.Sequence(
     goodPFJetsForL1T
     + l1tPFMetNoMuForDQM
     + l1tEtSumJetOfflineDQM
+    + l1tPrefiringOfflineDQM
 )
 
 l1tEtSumJetOfflineDQMEmuSeq = cms.Sequence(

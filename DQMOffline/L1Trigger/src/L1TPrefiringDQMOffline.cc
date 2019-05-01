@@ -24,6 +24,8 @@ void L1TPrefiringDQMOffline::dqmBeginRun(edm::Run const& iRun, edm::EventSetup c
 void L1TPrefiringDQMOffline::bookHistograms(DQMStore::IBooker &ibooker, edm::Run const&, edm::EventSetup const& evtSetup) {
   ibooker.setCurrentFolder(monitorDir_);
 
+  offline_vs_online_njets = ibooker.book2D("offline_vs_online_njets", "nJets in offline vs online", 100, 0, 100, 100, 0, 100);
+
   for(int ibx = kMinBx; ibx < kMaxBx; ++ibx){
     std::stringstream name;
     name << "offline_pt_eta_bx" <<ibx;
@@ -92,6 +94,8 @@ void L1TPrefiringDQMOffline::analyze(const edm::Event& evt, const edm::EventSetu
     edm::LogInfo("L1TPrefiringDQMOffline") << "Cannot find online jet record";
     return;
   }
+
+  offline_vs_online_njets->Fill(onlineJets->size(), offlineJets->size());
 
   for (const auto jet: *offlineJets){
       auto match_jet_bx = find_matched_jet(jet, *onlineJets);

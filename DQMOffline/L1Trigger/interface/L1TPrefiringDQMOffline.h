@@ -63,6 +63,7 @@ private:
   enum {kNumBx=5, kMinBx=-2, kMaxBx=2};
   MonitorElement* offline_pt_eta[kNumBx];
   MonitorElement* online_pt_eta[kNumBx];
+  MonitorElement* offline_vs_online_njets;
 };
 
 #endif

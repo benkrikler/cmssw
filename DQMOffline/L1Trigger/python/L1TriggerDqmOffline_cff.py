@@ -295,6 +295,7 @@ simCaloStage2Layer1Digis.ecalToken = cms.InputTag("ecalDigis","EcalTriggerPrimit
 simCaloStage2Layer1Digis.hcalToken = cms.InputTag("hcalDigis")
 
 from DQMOffline.L1Trigger.L1TEtSumJetOffline_cfi import *
+from DQMOffline.L1Trigger.L1TObjectTiming_cfi import *
 
 from DQMOffline.L1Trigger.L1TEGammaOffline_cfi import *
 

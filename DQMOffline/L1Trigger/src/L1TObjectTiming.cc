@@ -63,16 +63,16 @@ void L1TObjectTiming::analyze(edm::Event const& e, edm::EventSetup const& eSetup
   e.getByToken(thePFJetCollection_, pfJets);
 
   if (!pfJets.isValid()) {
-    edm::LogWarning("L1TStage2CaloLayer2Offline") << "invalid collection: PF jets " << std::endl;
+    edm::LogWarning("L1TObjectTiming") << "invalid collection: PF jets " << std::endl;
     return;
   }
   if (!l1Jets.isValid()) {
-    edm::LogWarning("L1TStage2CaloLayer2Offline") << "invalid collection: L1 jets " << std::endl;
+    edm::LogWarning("L1TObjectTiming") << "invalid collection: L1 jets " << std::endl;
     return;
   }
 
   if (pfJets->empty()) {
-    LogDebug("L1TStage2CaloLayer2Offline") << "no PF jets found" << std::endl;
+    LogDebug("L1TObjectTiming") << "no PF jets found" << std::endl;
     return;
   }
 

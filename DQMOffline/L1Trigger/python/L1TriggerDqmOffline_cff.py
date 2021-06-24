@@ -46,6 +46,7 @@ from DQMOffline.L1Trigger.L1TRate_Offline_cfi import *
 from DQMOffline.L1Trigger.L1TSync_Offline_cfi import *
 from DQMOffline.L1Trigger.L1TEmulatorMonitorOffline_cff import *
 from DQMOffline.L1Trigger.L1TEtSumJetOffline_cfi import *
+from DQMOffline.L1Trigger.L1TObjectTiming_cfi import *
 from DQMOffline.L1Trigger.L1TEGammaOffline_cfi import *
 from DQMOffline.L1Trigger.L1TTauOffline_cfi import *
 l1TdeRCT.rctSourceData = 'gctDigis'
@@ -295,7 +296,6 @@ simCaloStage2Layer1Digis.ecalToken = cms.InputTag("ecalDigis","EcalTriggerPrimit
 simCaloStage2Layer1Digis.hcalToken = cms.InputTag("hcalDigis")
 
 from DQMOffline.L1Trigger.L1TEtSumJetOffline_cfi import *
-from DQMOffline.L1Trigger.L1TObjectTiming_cfi import *
 
 from DQMOffline.L1Trigger.L1TEGammaOffline_cfi import *
 
@@ -326,6 +326,7 @@ l1tStage2OnlineDQM.remove(l1tStage2uGT)
 
 # sequence to run for all datasets
 Stage2l1TriggerOffline = cms.Sequence(
+                                l1tObjectTimingDQMSeq *
                                 Stage2l1TriggerOnline #*
                                 #dqmEnvL1TriggerReco
                                 )
@@ -372,6 +373,7 @@ Stage2l1tMuonEmulatorOffline = cms.Sequence(
                                 SimL1TCalorimeter +
                                 SimL1TMuon +
                                 l1tEtSumJetOfflineDQMEmuSeq +
+                                l1tObjectTimingDQMEmuSeq +
                                 l1tTauOfflineDQMEmu +
                                 l1tMuonDQMOfflineEmu
                                 )

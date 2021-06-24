@@ -1,10 +1,11 @@
+import FWCore.ParameterSet.Config as cms
 from DQMOffline.L1Trigger.L1TEtSumJetOffline_cfi import goodPFJetsForL1T
 
 from DQMServices.Core.DQMEDAnalyzer import DQMEDAnalyzer
-l1tObjectTiming = DQMEDAnalyzer(
+l1tObjectTimingDQM = DQMEDAnalyzer(
     "L1TObjectTiming",
-    thePFJetCollection_=cms.InputTag("goodPFJetsForL1T"),
-    theL1TJetCollection_=cms.InputTag("caloStage2Digis", "Jet"),
+    pfJetCollection=cms.InputTag("goodPFJetsForL1T"),
+    L1TCaloLayer2JetCollection=cms.InputTag("caloStage2Digis", "Jet"),
     histFolder=cms.string('L1T/L1TObjects/Timing'),
     tcdsRecordLabel = cms.InputTag("tcdsDigis","tcdsRecord"),
 )

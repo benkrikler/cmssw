@@ -32,22 +32,29 @@ protected:
   void analyze(edm::Event const& e, edm::EventSetup const& eSetup) override;
 
 private:
-  void fillWithMatchedJetPair(const l1t::Jet&, const reco::PFJet&, int l1tBX);
   // TODO: Move functin out of this class and then use this in the original filter plugin
   bool IsUnprefirableEvent(const edm::Event&, const edm::EDGetTokenT<TCDSRecord>&);
 
-  // Config file parameters TO CLEAN
   edm::EDGetTokenT<reco::PFJetCollection> thePFJetCollection_;
   edm::EDGetTokenT<l1t::JetBxCollection> theL1TJetCollection_;
   edm::EDGetTokenT<TCDSRecord> tcdsRecordToken_;
   std::string histFolder_;
 
   enum {kCentralBX=2, kNumBx=5};
-  MonitorElement* h_resolutionJetEta_;
-  MonitorElement* h_nMatched_;
-  MonitorElement* h_pt_eta_[kNumBx];
-  MonitorElement* h_phi_eta_[kNumBx];
 
+  class PlotCollect{
+    public:
+      void bookHistograms(DQMStore::IBooker&, bool prefirable);
+      void fillWithMatchedJetPair(const l1t::Jet&, const reco::PFJet&, int l1tBX);
+
+    private:
+      MonitorElement* h_nMatched_;
+      MonitorElement* h_pt_eta_[kNumBx];
+      MonitorElement* h_phi_eta_[kNumBx];
+  };
+  MonitorElement* h_prefirable_;
+
+  PlotCollect plots[2];
 };
 
 #endif // L1TObjectTiming_H
